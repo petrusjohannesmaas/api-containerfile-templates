@@ -3,13 +3,13 @@ import json
 
 app = Flask(__name__)
 
-x = '{"response": "Your Podman container is running"}'
+x = '{"response": "🎉 Your Python server is running"}'
 
 y = json.loads(x)
 
 
 @app.route("/")
-def hello_world():
+def index():
     return y
 
 

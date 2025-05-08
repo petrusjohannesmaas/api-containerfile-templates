@@ -1,0 +1,10 @@
+FROM golang:1.24.3
+
+WORKDIR /app
+
+COPY api/server.go /app/
+RUN go build -o app server.go
+
+EXPOSE 8080
+
+CMD ["./app"]
