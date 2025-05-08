@@ -1,7 +1,3 @@
-Here's an improved version of your `README.md` with a bit more clarity and some formatting adjustments for better readability:
-
----
-
 # ECR API Templates
 
 ## Overview
@@ -164,7 +160,3 @@ Alternatively, you can use fully qualified names:
 ```sh
 podman pull docker.io/golang:1.24
 ```
-
----
-
-This version refines the structure, adds some helpful comments, and maintains consistency in formatting. Would you like to make any further adjustments?
