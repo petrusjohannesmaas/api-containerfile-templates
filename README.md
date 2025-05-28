@@ -1,162 +1,177 @@
-# ECR API Templates
+# 🐳 API Containerfile Templates
 
-## Overview
+## 🚀 Overview
 
-**ECR API Templates** is a collection of lightweight, containerized API templates for **Python Flask**, **JavaScript (Express.js)**, and **Go (net/http)**, designed for deployment on **AWS Elastic Container Registry (ECR)**. These templates provide a simple starting point for creating and deploying backend services using **Podman**.
+A collection of production-ready containerized API templates for:
 
-> **Note:** You can replace Podman commands with Docker, as both adhere to the Open Container Initiative (OCI) standards. Just swap `podman` with `docker` in the commands, and everything should work with minimal adjustments!
+* **Python Flask**
+* **JavaScript (Express.js)**
+* **Go (net/http)**
 
-## How to Use This Repo
+These templates offer a simple yet powerful starting point for building and deploying backend APIs using **Docker** or **Podman**.
 
-This is a template repository, allowing you to generate new repositories with the same structure, branches, and files—without including my commit history. For more details, check out GitHub's guide on creating repositories from templates:
-[GitHub Docs](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+> 💡 **Tip:** Podman can be used as a drop-in replacement for Docker. Just swap `docker` with `podman`—they both follow the [OCI standards](https://opencontainers.org/).
 
-You may also want to integrate this template with my [Development Database Deployer](https://github.com/petrusjohannesmaas/dev-database-deployer) project to quickly set up an API and database container. Modify the API code as needed to add packages or ORMs (e.g., `mongoose`, `pg`, `SQLAlchemy`, etc.).
-Make sure to update the `requirements.txt` (for Python) or `package.json` (for JavaScript) files as well!
+---
 
-## Image Versions
+## 📦 Repository Usage
 
-Below are the latest stable, LTS, and major releases for **Python**, **Go**, and **JavaScript (Node.js)** that can be used in your **Containerfiles**:
+This repository is a **template**—you can generate your own project from it without copying my commit history. For help, refer to [GitHub’s Template Repo Guide](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 
-### Python
+Want to include a database too? Use it alongside my [`dev-database-deployer`](https://github.com/petrusjohannesmaas/dev-database-deployer) for a full API + database dev environment.
 
-* **Latest Stable:** Python 3.13.3 (April 8, 2025) [Download](https://www.python.org/downloads/)
-* **Latest LTS:** Python 3.11 (Security updates until October 2027) [More Info](https://www.python.org/downloads/)
-* **Upcoming Major Release:** Python 3.14 (Planned for October 2025) [Schedule](https://www.python.org/downloads/)
+---
 
-### Go
+## 🛠 Image Versions
 
-* **Latest Stable:** Go 1.24.3 (May 7, 2025) [Release Notes](https://devblogs.microsoft.com/go/go-1-24-3-1-and-1-23-9-1-microsoft-builds-now-available/)
-* **Latest Major Release:** Go 1.24.0 (February 11, 2025) [Release History](https://go.dev/doc/devel/release)
+Choose from stable or long-term support (LTS) versions when customizing your `Containerfile`.
 
-### JavaScript (Node.js)
+### 🐍 Python
 
-* **Latest Stable:** Node.js 21
-* **Latest LTS:** Node.js 20
-* **Upcoming LTS:** Node.js 22 (Expected October 2025)
+| Version  | Notes                             |
+| -------- | --------------------------------- |
+| `3.13.3` | Latest Stable (April 2025)        |
+| `3.11`   | LTS (Sec. updates until Oct 2027) |
+| `3.14`   | Upcoming (Oct 2025)               |
 
-> **Note:** For containerization, **LTS versions** are recommended for better stability.
+### 🦫 Go
 
-## Clone the Repository
+| Version  | Notes                    |
+| -------- | ------------------------ |
+| `1.24.3` | Latest Stable (May 2025) |
+| `1.24.0` | Major Release (Feb 2025) |
 
-```sh
-git clone https://github.com/petrusjohannesmaas/ECR-API-Templates.git
-cd ECR-API-Templates
+### ⚙️ Node.js
+
+| Version | Notes                   |
+| ------- | ----------------------- |
+| `21.x`  | Latest Stable           |
+| `20.x`  | LTS                     |
+| `22.x`  | Upcoming LTS (Oct 2025) |
+
+> ✅ **Recommended:** Use LTS versions for stability in production environments.
+
+---
+
+## 📂 Clone the Repository
+
+```bash
+git clone https://github.com/petrusjohannesmaas/api-containerfile-templates.git
+cd api-containerfile-templates
 ```
 
-## Building Containers
+---
+
+## 🏗️ Building the Containers
 
 ### Flask (Python)
 
-```sh
-podman build -t flask-api -f Containerfile .
+```bash
+docker build -t flask-api -f Containerfile .
 ```
 
 ### Express (JavaScript)
 
-```sh
-podman build -t express-api -f Containerfile .
+```bash
+docker build -t express-api -f Containerfile .
 ```
 
-### Go
+### Go (net/http)
 
-```sh
-podman build -t go-api -f Containerfile .
+```bash
+docker build -t go-api -f Containerfile .
 ```
 
-## Running Containers
+---
 
-### Flask (Python) - Port 5000
+## ▶️ Running the Containers
 
-```sh
-podman run -d -p 5000:5000 flask-api
+### Flask (Port `5000`)
+
+```bash
+docker run -d -p 5000:5000 flask-api
 ```
 
-### Express (JavaScript) - Port 3000
+### Express (Port `3000`)
 
-```sh
-podman run -d -p 3000:3000 express-api
+```bash
+docker run -d -p 3000:3000 express-api
 ```
 
-### Go - Port 8080
+### Go (Port `8080`)
 
-```sh
-podman run -d -p 8080:8080 go-api
+```bash
+docker run -d -p 8080:8080 go-api
 ```
 
-## Testing APIs
+---
 
-You can test the APIs using `curl` or directly from your browser:
+## 🔍 Testing the APIs
 
-```sh
-curl http://localhost:5000/  # Flask API
-curl http://localhost:3000/  # Express API
-curl http://localhost:8080/  # Go API
+Use `curl` or open in your browser:
+
+```bash
+curl http://localhost:5000/  # Flask
+curl http://localhost:3000/  # Express
+curl http://localhost:8080/  # Go
 ```
 
-Or open these URLs in your browser:
+Or visit:
 
-* Flask: `http://localhost:5000/`
-* Express: `http://localhost:3000/`
-* Go: `http://localhost:8080/`
+* [http://localhost:5000](http://localhost:5000) – Flask
+* [http://localhost:3000](http://localhost:3000) – Express
+* [http://localhost:8080](http://localhost:8080) – Go
 
-## Managing Containers
+---
 
-To manage your containers:
+## 📤 Pushing to Docker Hub
 
-```sh
-podman ps        # List running containers
-podman stop <id> # Stop a container
-podman rm <id>   # Remove a container
+To share your image publicly:
+
+### 1. Log in to Docker Hub
+
+```bash
+docker login
 ```
 
-## Automating with GitHub Actions
+### 2. Tag your image
 
-You may want to set up **GitHub Actions** to automate container builds and deployments. Here's a guide on using **ECR with GitHub Actions**: [GitHub Docs](https://docs.github.com/en/actions/use-cases-and-examples/deploying/deploying-to-amazon-elastic-container-service)
-
-## Pushing an Image to ECR Using Podman
-
-1. **Authenticate with ECR**:
-
-   ```sh
-   aws ecr get-login-password --region <your-region> | podman login --username AWS --password-stdin <your-account-id>.dkr.ecr.<your-region>.amazonaws.com
-   ```
-
-2. **Create an ECR Repository** (if necessary):
-
-   ```sh
-   aws ecr create-repository --repository-name my-repository
-   ```
-
-3. **Build and Tag Your Podman Image**:
-
-   ```sh
-   podman build -t my-image .
-   podman tag my-image:latest <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/my-repository:latest
-   ```
-
-4. **Push the Image to ECR**:
-
-   ```sh
-   podman push <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/my-repository:latest
-   ```
-
-5. **Verify the Image in ECR**:
-
-   ```sh
-   aws ecr list-images --repository-name my-repository
-   ```
-
-## Troubleshooting Podman Registry Issues
-
-If Podman fails to find images (e.g., **Go** images), try defining a registry search in `/etc/containers/registries.conf`:
-
-```sh
-unqualified-search-registries = ["docker.io"]
+```bash
+docker tag flask-api yourusername/flask-api:latest
 ```
 
-Alternatively, you can use fully qualified names:
+### 3. Push the image
 
-```sh
-podman pull docker.io/golang:1.24
+```bash
+docker push yourusername/flask-api:latest
 ```
+
+Repeat the steps for other images (`express-api`, `go-api`) as needed.
+
+> 📝 Replace `yourusername` with your Docker Hub username.
+
+---
+
+## 🧰 Managing Containers
+
+```bash
+docker ps                # List active containers
+docker stop <container>  # Stop container
+docker rm <container>    # Remove container
+```
+
+---
+
+## 📈 Future Enhancements
+
+* Add more language templates (e.g., Rust, Java)
+* Add support for **Docker Compose**
+* Add support for **Kubernetes** deployment files
+* Improve Go template to support third-party packages
+* **Incorporate CI/CD processes** (e.g., GitHub Actions, GitLab CI)
+
+---
+
+## 📄 License
+
+MIT License © [Petrus Johannes Maas](https://github.com/petrusjohannesmaas)
